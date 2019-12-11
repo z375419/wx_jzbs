@@ -16,12 +16,15 @@ class Handle(object):
             list = [token, timestamp, nonce]
             list.sort()
             sha1 = hashlib.sha1()
-            map(sha1.update, list)
+            # map(sha1.update, list)
+            sha1.update(list[0].encode('utf-8'))
+            sha1.update(list[1].encode('utf-8'))
+            sha1.update(list[2].encode('utf-8'))
             hashcode = sha1.hexdigest()
             print("handle/GET func: hashcode, signature: ", hashcode, signature)
             if hashcode == signature:
                 return echostr
             else:
                 return ""
-        except Exception, Argument:
-            return Argument
+        except Exception as e:
+            return e
