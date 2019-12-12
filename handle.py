@@ -43,6 +43,7 @@ class Handle(object):
             if isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text':
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
+                print(recMsg.Content)
                 if recMsg.Content == "bwg密码":
                     content = "KXmklljHJ"
                 else:
