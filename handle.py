@@ -46,8 +46,9 @@ class Handle(object):
             if isinstance(recMsg, receive.Msg):
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
-                print(recMsg.Content.decode('utf-8'))
+                
                 if recMsg.MsgType == "text":
+                    print(recMsg.Content.decode('utf-8'))
                     if recMsg.Content.decode("utf-8") == "bwg密码":
                         content = "KXmklljHJ"
                     else:
