@@ -29,5 +29,5 @@ class ImageMsg(Msg):
     def __init__(self, xmlData):
         Msg.__init__(self, xmlData)
         print("xmlData=",xmlData)
-        self.PicUrl = xmlData.find('PicUrl')
-        self.MediaId = xmlData.find('MediaId')
+        self.PicUrl = xmlData.find('PicUrl').text
+        self.MediaId = xmlData.find('MediaId').text
