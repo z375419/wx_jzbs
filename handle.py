@@ -43,7 +43,7 @@ class Handle(object):
             # 后台打日志
             recMsg = receive.parse_xml(webData)
             replyNone = reply.Msg()
-            if isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text':
+            if isinstance(recMsg, receive.Msg):
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
                 print(recMsg.Content.decode('utf-8'))
