@@ -7,6 +7,7 @@ import receive
 
 
 class Handle(object):
+    # 验证token是否是微信消息
     def GET(self):
         try:
             data = web.input()
@@ -34,6 +35,7 @@ class Handle(object):
         except Exception as e:
             return e
 
+    # 接收微信后台消息, 并进行处理
     def POST(self):
         try:
             webData = web.data()
@@ -44,14 +46,21 @@ class Handle(object):
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
                 print(recMsg.Content.decode('utf-8'))
-                if recMsg.Content.decode("utf-8") == "bwg密码":
-                    content = "KXmklljHJ"
+                if recMsg.MsgType == "text":
+                    if recMsg.Content.decode("utf-8") == "bwg密码":
+                        content = "KXmklljHJ"
+                    else:
+                        content = "欢迎关注!"
+                    replyMsg = reply.TextMsg(toUser, fromUser, content)
+                    return replyMsg.send()
+                elif recMsg.MsgType == "image":
+                    mediaId = recMsg.MediaId
+                    replyMsg = reply.ImageMsg(toUser,fromUser,mediaId)
+                    return replyMsg.send()
                 else:
-                    content = "欢迎关注!"
-                replyMsg = reply.TextMsg(toUser, fromUser, content)
-                return replyMsg.send()
+                    return reply.Msg.send()
             else:
                 print("暂且不处理")
-                return "success"
+                return reply.Msg.send() # 无匹配模式则返回success
         except Exception as e:
             return e
