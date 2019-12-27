@@ -42,6 +42,7 @@ class Handle(object):
             print("Handle Post webdata is ", webData)
             # 后台打日志
             recMsg = receive.parse_xml(webData)
+            replyNone = reply.Msg()
             if isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text':
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
@@ -58,9 +59,9 @@ class Handle(object):
                     replyMsg = reply.ImageMsg(toUser,fromUser,mediaId)
                     return replyMsg.send()
                 else:
-                    return reply.Msg.send()
+                    return replyNone.send()
             else:
                 print("暂且不处理")
-                return reply.Msg.send() # 无匹配模式则返回success
+                return replyNone.send() # 无匹配模式则返回success
         except Exception as e:
             return e
