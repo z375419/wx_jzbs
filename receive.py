@@ -51,8 +51,8 @@ class EventMsg(object):
         self.CreateTime = xmlData.find('CreateTime').text
         self.MsgType = xmlData.find('MsgType').text
         self.Event = xmlData.find('Event').text
-        
+
 class Click(EventMsg):
     def __init__(self, xmlData):
         EventMsg.__init__(self, xmlData)
-        self.Eventkey = xmlData.find('EventKey').text
+        self.EventKey = xmlData.find('EventKey').text
