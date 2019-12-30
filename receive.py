@@ -12,13 +12,13 @@ def parse_xml(web_data):
         if event_type == 'CLICK':
             return Click(xmlData)
         # elif event_type in ('subscribe', 'unsubscribe'):
-            # return Subscribe(xmlData)
+        #     return Subscribe(xmlData)
         # elif event_type == 'VIEW':
-            # return View(xmlData)
+        #     return View(xmlData)
         # elif event_type == 'LOCATION':
-            # return LocationEvent(xmlData)
+        #     return LocationEvent(xmlData)
         # elif event_type == 'SCAN':
-            # return Scan(xmlData)
+        #     return Scan(xmlData)
     elif msg_type == 'text':
         return TextMsg(xmlData)
     elif msg_type == 'image':

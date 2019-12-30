@@ -63,10 +63,12 @@ class Handle(object):
                     return replyNone.send()
             # 事件类型的处理程序
             elif isinstance(recMsg, receive.EventMsg): 
-                print('event', recMsg.Event, recMsg.EventKey)
+                toUser = recMsg.FromUserName
+                fromUser = recMsg.ToUserName
+                
                 if recMsg.Event == 'CLICK':
                     if recMsg.EventKey == 'mpGuide':
-                        content = "编写中，尚未完成"
+                        content = "编写中,尚未完成"
                         replyMsg = reply.TextMsg(toUser, fromUser, content)
                         return replyMsg.send()
             else:
