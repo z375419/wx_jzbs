@@ -60,9 +60,9 @@ if __name__ == '__main__':
                 ]
             },
             {
-                "type": "media_id",
+                "type": "view",
                 "name": "旅行",
-                "media_id": "z2zOokJvlzCXXNhSjF46gdx6rSghwX2xOD5GUV9nbX4"
+                "url": "http://www.baidu.com"
             }
           ]
     }
