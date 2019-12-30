@@ -61,6 +61,13 @@ class Handle(object):
                     return replyMsg.send()
                 else:
                     return replyNone.send()
+            # 事件类型的处理程序
+            elif isinstance(recMsg, receive.EventMsg): 
+                if recMsg.Event == 'CLICK':
+                    if recMsg.Eventkey == 'mpGuide':
+                        content = u"编写中，尚未完成".encode('utf-8')
+                        replyMsg = reply.TextMsg(toUser, fromUser, content)
+                        return replyMsg.send()
             else:
                 print("暂且不处理")
                 return replyNone.send() # 无匹配模式则返回success

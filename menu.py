@@ -3,6 +3,8 @@
 import requests
 from basic import Basic
 
+# 先获取accessToken, 带入这个token运行这个py则可更新到对应公众号的资料
+# python3 menu.py
 class Menu(object):
     def __init__(self):
         pass
